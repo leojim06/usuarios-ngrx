@@ -1,5 +1,13 @@
 <div>
-  <h3>Users Page</h3>
-  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quae ducimus eos dolores harum dolor, quidem ea expedita
-    laborum voluptas, delectus ipsa eius beatae maxime maiores nisi earum, officiis officia.</p>
+  <h3>Users Page - Lista de Usuarios</h3>
+  <ol>
+    <li *ngFor="let user of users | async">
+      {{ user.name }}
+      <button (click)="selectUser(user)">Select User</button>
+    </li>
+  </ol>
+
+  <p>Total users: {{ totalUsers | async }}</p>
+  <p>Selected user: {{ selectedUser | async | json }}</p>
+  <button (click)="deselectUser()">Deselect User</button>
 </div>

@@ -17,8 +17,6 @@ export class UsersEffects {
   getUsers = this.actions
     .ofType(UserActions.LOAD_USERS)
     .switchMap(action => this.usersService.getUsers()
-      // .map(res => ({ type: UserActions.LOAD_USERS_SUCCESS, payload: res }))
-      // .catch(error => Observable.of({ type: UserActions.LOAD_USERS_FAIL, payload: error })));
       .map((users: User[]) => new UserActions.LoadUsersSuccess({ users }))
       .catch((error: any) => Observable.of(new UserActions.LoadUsersFail({ error }))));
 }

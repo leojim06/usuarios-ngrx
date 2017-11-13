@@ -1,3 +1,4 @@
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import { User } from './users.model';
@@ -49,5 +50,27 @@ export function reducer(state: State = initialState, actions: UserActions.All): 
   }
 }
 
-export const getSelectedUserId = (state: State) => state.selectedUserId;
-export const getUserError = (state: State) => state.error;
+export const selectUserState = createFeatureSelector<State>('users');
+
+export const {
+  // select the array of user ids
+  selectIds: selectUserIds,
+
+  // select the dictionary of user entities
+  selectEntities: selectUserEntities,
+
+  // select the array of users
+  selectAll: selectAllUsers,
+
+  // select the total user count
+  selectTotal: selectUserTotal
+} = adapter.getSelectors(selectUserState);
+
+export const selectCurrentUserId = createSelector(selectUserState, (state: State) => state.selectedUserId);
+export const selectUserError = createSelector(selectUserState, (state: State) => state.error);
+export const selectCurrentUser = createSelector(
+  selectUserEntities,
+  selectCurrentUserId,
+  (userEntities, userId) => userEntities[userId]);
+
+

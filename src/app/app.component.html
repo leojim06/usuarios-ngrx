@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{title}}!
   </h1>
@@ -16,5 +16,18 @@
   <p>Usuario seleccionado: {{ selectCurrentUser | async | json }}</p>
 </div>
 
-<button (click)="deselectUser()">Deselect User</button>
+<button (click)="deselectUser()">Deselect User</button> -->
 
+<div>
+  <h1>Bienvenido al ejemplo Angular 5 con NgRx</h1>
+</div>
+
+<main>
+  <nav>
+    <ul>
+      <li><a [routerLink]="['home']">Home Page</a></li>
+      <li><a [routerLink]="['users']">Users Page</a></li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</main>

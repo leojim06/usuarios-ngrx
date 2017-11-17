@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { User } from './users.model';
+import { User } from '../models/users.model';
 
 export const LOAD_USERS = '[User] Load Users';
 export const LOAD_USERS_FAIL = '[User] Load Users Fail';

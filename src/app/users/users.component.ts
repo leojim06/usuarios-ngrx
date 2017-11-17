@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as UsersActions from './users.actions';
-import { selectAllUsers, selectUserTotal, selectCurrentUser } from './users.reducer';
-import { User } from './users.model';
+import * as UsersActions from '../store/actions/users.actions';
+import { selectAllUsers, selectUserTotal, selectCurrentUser, } from '../store/reducers/users.reducer';
+import { User } from '../store/models/users.model';
 
 @Component({
   selector: 'app-users',

@@ -1,13 +1,17 @@
-<div>
-  <h1>Bienvenido al ejemplo Angular 5 con NgRx</h1>
-</div>
+<nav class="main-navbar">
+  <ul>
+    <li class="main-navbar__links">
+      <a class="main-navbar__button" [routerLink]="['home']">Home Page</a>
+    </li>
+    <li class="main-navbar__links">
+      <a class="main-navbar__button" [routerLink]="['users']">Users Page</a>
+    </li>
+  </ul>
+</nav>
 
-<main>
-  <nav>
-    <ul>
-      <li><a [routerLink]="['home']">Home Page</a></li>
-      <li><a [routerLink]="['users']">Users Page</a></li>
-    </ul>
-  </nav>
+<main class="content">
+  <div>
+    <h1>Bienvenido al ejemplo Angular 5 con NgRx</h1>
+  </div>
   <router-outlet></router-outlet>
 </main>

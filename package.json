@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start:server": "json-server --watch ./server/db.json",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

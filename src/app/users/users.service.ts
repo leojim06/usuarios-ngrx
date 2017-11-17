@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './users.model';
+import { User } from '../store/models/users.model';
 
 @Injectable()
 export class UsersService {
@@ -9,7 +9,7 @@ export class UsersService {
 
   getUsers() {
     return this.httpClient
-      .get('https://jsonplaceholder.typicode.com/users');
+      .get('http://localhost:3000/users');
   }
 
 }

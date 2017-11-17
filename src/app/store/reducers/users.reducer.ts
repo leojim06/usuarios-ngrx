@@ -1,8 +1,8 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-import { User } from './users.model';
-import * as UserActions from './users.actions';
+import { User } from '../models/users.model';
+import * as UserActions from '../actions/users.actions';
 
 export interface State extends EntityState<User> {
   // additional entities state properties

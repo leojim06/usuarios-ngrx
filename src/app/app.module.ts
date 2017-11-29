@@ -8,13 +8,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './store';
 import { UsersEffects } from './store/effects/users.effects';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersModule } from './users/users.module';
-
-
 
 @NgModule({
   declarations: [

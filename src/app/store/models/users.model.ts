@@ -1,3 +1,9 @@
+/**
+ * Modelo de la entidad User. Contiene toda la información del usuario
+ *
+ * @export
+ * @interface User
+ */
 export interface User {
   id: number;
   name: string;

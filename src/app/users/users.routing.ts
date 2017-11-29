@@ -17,12 +17,6 @@ const routes: Routes = [
       { path: ':id', component: UserDetailComponent, data: { title: 'Información del Usuario' } },
       { path: ':id/edit', component: UserEditComponent, data: { title: 'Editar Usuario' } }
     ]
-    // children: [
-    //   { path: '', redirectTo: 'list', pathMatch: 'full' },
-    //   { path: 'list', component: UserListComponent },
-    //   { path: 'detail/:id', component: UserDetailComponent },
-    //   { path: 'userForm', component: UserFormComponent }
-    // ]
   }
 ];
 

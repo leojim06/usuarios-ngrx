@@ -1,0 +1,119 @@
+<form (submit)="submit()" class="form" [formGroup]="form">
+
+  <div class="form-group">
+
+    <h4>Datos del usuario</h4>
+
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" class="form-control" formControlName="username">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="phone">Telefono</label>
+        <input type="tel" id="phone" class="form-control" formControlName="phone">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="website">Página web</label>
+        <input type="url" id="website" class="form-control" formControlName="website">
+      </div>
+    </div>
+
+    <div class="form-group" id="address" formGroupName="address">
+      <div class="form-row">
+        <div class="col-md-6">
+
+          <h4>Dirección del usuario</h4>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="street">Calle</label>
+              <input type="text" id="street" class="form-control" formControlName="street">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="suite">Habitación</label>
+              <input type="text" id="suite" class="form-control" formControlName="suite">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="city">Ciudad</label>
+              <input type="text" id="city" class="form-control" formControlName="city">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="zipcode">Código postal</label>
+              <input type="number" id="zipcode" class="form-control" formControlName="zipcode">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group" id="geo" formGroupName="geo">
+
+            <h4>Localización geoespacial</h4>
+
+            <div class="form-group">
+              <label for="lat">Latitud</label>
+              <input type="number" id="lat" class="form-control" formControlName="lat">
+            </div>
+
+            <div class="form-group">
+              <label for="lng">Longitud</label>
+              <input type="number" id="lng" class="form-control" formControlName="lng">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="form-group" id="company" formGroupName="company">
+      <h4>Empresa en la que trabaja</h4>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Compañia</label>
+          <input type="text" id="name" class="form-control" formControlName="name">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="catchPhrase">Slogan</label>
+          <input type="text" id="catchPhrase" class="form-control" formControlName="catchPhrase">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="bs">BS</label>
+          <input type="text" id="bs" class="form-control" formControlName="bs">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-success btn-block" [disabled]="!form.valid">Enviar</button>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-danger btn-block" (click)="cancelNewUser()">Cancelar</button>
+    </div>
+  </div>
+</form>

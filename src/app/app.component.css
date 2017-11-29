@@ -1,10 +1,10 @@
-.main-navbar {
+/* .main-navbar {
   padding: 1em;
   background-color: #dc143c;
 }
 
 .main-navbar__links {
-  padding: 1em;
+  padding: 1em 0;
   display: inline;
 }
 
@@ -13,11 +13,13 @@
 }
 
 .main-navbar__button {
+  padding: 1em;
   text-decoration-style: none;
   text-decoration-line: none;
-  color: #FFF;
+  color: #ffffff;
 }
 
 .content {
   padding: 0 4em 2em;
-}
+  /* background-color: #ebebeb; */
+/* }  */

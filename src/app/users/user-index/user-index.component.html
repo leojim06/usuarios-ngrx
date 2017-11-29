@@ -1,0 +1,10 @@
+
+<h3>Lista de Usuarios</h3>
+
+<app-user-list
+  [users]="users"
+  (onShow)="showUser($event)"
+  (onEdit)="editUser($event)"
+  (onDelete)="deleteUser($event)"
+  (onNewUser)="createUser()"
+></app-user-list>

@@ -1,17 +1,22 @@
-<nav class="main-navbar">
-  <ul>
-    <li class="main-navbar__links">
-      <a class="main-navbar__button" [routerLink]="['home']">Home Page</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['home']">Home Page</a>
     </li>
-    <li class="main-navbar__links">
-      <a class="main-navbar__button" [routerLink]="['users']">Users Page</a>
+    <li class="nav-item">
+      <a class="nav-link text-light" [routerLink]="['users']">Users Page</a>
     </li>
   </ul>
 </nav>
 
-<main class="content">
+<main class="container">
   <div>
     <h1>Bienvenido al ejemplo Angular 5 con NgRx</h1>
   </div>
+  <br>
   <router-outlet></router-outlet>
 </main>
+
+<footer>
+  <br>
+</footer>

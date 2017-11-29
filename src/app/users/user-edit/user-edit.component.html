@@ -1,0 +1,6 @@
+<h3>Editar usuario </h3>
+
+<app-user-form
+  [user]="user | async"
+  (onSubmit)="updateUser($event)"
+></app-user-form>

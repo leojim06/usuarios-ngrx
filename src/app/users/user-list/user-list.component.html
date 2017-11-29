@@ -1,0 +1,60 @@
+<table class="table table-hover table-sm">
+  <caption>Lista de usuarios</caption>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col" class=" text-center">
+        <button class="btn btn-primary" (click)="createUser()" title="Crear usuario nuevo">
+          <i class="fa fa-lg fa-user-plus" aria-hidden="true"></i>
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | async">
+      <th class="align-middle" scope="row">{{ user.id }}</th>
+      <th>
+        <div>
+          <strong class="d-block">{{ user.name }}</strong>
+          <small class="d-block">{{ user.email }}</small>
+        </div>
+      </th>
+      <td class="align-middle">{{ user.username }}</td>
+      <td class="align-middle text-center">
+        <button (click)="showDetails(user)" type="button" class="btn btn-info btn-sm" title="Ver más">
+          <i class="fa fa-lg fa-asterisk" aria-hidden="true"></i>
+        </button>
+        <button (click)="editUser(user)" type="button" class="btn btn-warning btn-sm" title="Editar">
+          <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+        <button (click)="deleteUser(user)" type="button" class="btn btn-danger btn-sm" title="Eliminar">
+          <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div class="card" *ngFor="let user of users | async">
+  <div class="card__title">
+    <div>
+      <h3 class="card__name">{{ user.name }}</h3>
+      <div class="card__buttons card_pull-right">
+        <button class="btn">EDIT</button>
+        <button class="btn">DETAIL</button>
+        <button class="btn">DELETE</button>
+      </div>
+    </div>
+    <span class="card__subtitle card_pull-left ">{{ user.username }}</span>
+    <span class="card__subtitle card_pull-right">{{ user.email }}</span>
+    <div class="card_clear"></div>
+  </div>
+  <div class="card__body">
+    <p>
+      <strong>{{ user.company.name }}</strong>
+    </p>
+    <p>{{ user.company.catchPhrase }}</p>
+  </div>
+</div> -->

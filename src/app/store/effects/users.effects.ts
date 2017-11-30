@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { UsersService } from '../../users/users.service';
 import * as UserActions from '../actions/users.actions';
 import { User } from '../models/users.model';
+import { InfoToasterService, ErrorTypeToaster } from '../../core/services/info-toaster.service';
 
 /**
  * Effectos para el recurso usuario.
@@ -24,7 +25,8 @@ export class UsersEffects {
    */
   constructor(
     private actions: Actions,
-    private usersService: UsersService) { }
+    private usersService: UsersService,
+    private infoToasterService: InfoToasterService) { }
 
   /**
    * Efecto getUsers, que captura la acción LOAD_USERS y ejecuta la función getUsers() del servicio
@@ -41,8 +43,7 @@ export class UsersEffects {
       .map((users: User[]) => new UserActions.LoadUsersSuccess({ users }))
       // .catch((error: any) => Observable.of(new UserActions.LoadUsersFali({ error })));
       .catch((error: any) => {
-        // Sustituir muestra de errores por servicio especial de información
-        alert(error['error']['error']['message']);
+        this.infoToasterService.userActionsFailToaster(ErrorTypeToaster.LOAD);
         return Observable.empty();
       })
     );
@@ -60,10 +61,13 @@ export class UsersEffects {
     .ofType(UserActions.ADD_USER)
     .map(toPayload)
     .switchMap(payload => this.usersService.addUser(payload.user)
-      .map((user: User) => new UserActions.AddUserSuccess({ user }))
+      .map((user: User) => {
+        this.infoToasterService.addUserSuccessToaster(user);
+        return new UserActions.AddUserSuccess({ user });
+      })
       // .catch((error: any) => Observable.of(new UserActions.AddUserFail({ error }))));
       .catch((error: any) => {
-        alert(error['error']['error']['message']);
+        this.infoToasterService.userActionsFailToaster(ErrorTypeToaster.ADD);
         return Observable.empty();
       })
     );
@@ -81,12 +85,15 @@ export class UsersEffects {
     .ofType(UserActions.UPDATE_USER)
     .map(toPayload)
     .switchMap(payload => this.usersService.updateUser(payload.user)
-      .map((user: any) => new UserActions.UpdateUserSuccess({
-        user: { id: user.id, changes: user }
-      }))
+      .map((user: any) => {
+        this.infoToasterService.updateUserSuccessToaster(user);
+        return new UserActions.UpdateUserSuccess({
+          user: { id: user.id, changes: user }
+        });
+      })
       // .catch((error: any) => Observable.of(new UserActions.UpdateUserFail({ error }))));
       .catch((error: any) => {
-        alert(error['error']['error']['message']);
+        this.infoToasterService.userActionsFailToaster(ErrorTypeToaster.UPDATE);
         return Observable.empty();
       })
     );
@@ -104,10 +111,13 @@ export class UsersEffects {
     .ofType(UserActions.DELETE_USER)
     .map(toPayload)
     .switchMap(payload => this.usersService.removeUser(payload.id)
-      .map((user: any) => new UserActions.DeleteUserSuccess({ id: payload.id }))
+      .map((user: any) => {
+        this.infoToasterService.deleteUserSuccessToaster();
+        return new UserActions.DeleteUserSuccess({ id: payload.id });
+      })
       // .catch((error: any) => Observable.of(new UserActions.DeleteUserFail({ error }))));
       .catch((error: any) => {
-        alert(error['error']['error']['message']);
+        this.infoToasterService.userActionsFailToaster(ErrorTypeToaster.DELETE);
         return Observable.empty();
       })
     );

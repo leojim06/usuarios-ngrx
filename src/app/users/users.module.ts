@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { CommonModule } from '@angular/common';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 import { UsersComponent } from './users.component';
 import { UsersService } from './users.service';
@@ -12,11 +12,13 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 
 import { UsersRoutingModule } from './users.routing';
+import { SharedModule } from '../core/modules/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    // CommonModule,
+    // ReactiveFormsModule,
+    SharedModule,
     UsersRoutingModule
   ],
   declarations: [

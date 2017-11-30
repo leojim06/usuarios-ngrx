@@ -2,11 +2,13 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Modal } from 'ngx-modialog/plugins/vex';
 
 import * as fromRoot from '../../store/index';
 import * as fromUsers from '../../store/reducers/users.reducer';
 import * as usersActions from '../../store/actions/users.actions';
 import { User } from '../../store/models/users.model';
+import { InfoToasterService } from '../../core/services/info-toaster.service';
 
 @Component({
   selector: 'app-user-index',
@@ -21,7 +23,9 @@ export class UserIndexComponent implements OnInit {
 
   constructor(
     private store: Store<fromRoot.State>,
-    private router: Router
+    private router: Router,
+    private infoToasterService: InfoToasterService,
+    public modal: Modal
   ) { }
 
   ngOnInit() {
@@ -40,7 +44,21 @@ export class UserIndexComponent implements OnInit {
   }
 
   deleteUser(user: User) {
-    this.store.dispatch(new usersActions.DeleteUser({ id: user.id }));
+    this.modal.confirm()
+      .isBlocking(true)
+      .showCloseButton(false)
+      .keyboard(27)
+      .placeholder('Eliminar usuario')
+      .message(`Desea eliminar al usuario ${user.name}`)
+      .okBtn('Eliminar')
+      .cancelBtn('Cancelar')
+      .open()
+      .result
+      .then(result =>
+        result ?
+          this.store.dispatch(new usersActions.DeleteUser({ id: user.id })) :
+          this.infoToasterService.cancelDeleteUserToaster())
+      .catch(reason => this.infoToasterService.cancelDeleteUserToaster());
   }
 
   createUser() {

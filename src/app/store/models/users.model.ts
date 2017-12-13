@@ -9,7 +9,7 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  address: {
+  address?: {
     street: string;
     suite: string;
     city: string;
@@ -19,9 +19,9 @@ export interface User {
       lng: string;
     };
   };
-  phone: string;
-  website: string;
-  company: {
+  phone?: string;
+  website?: string;
+  company?: {
     name: string;
     catchPhrase: string;
     bs: string;

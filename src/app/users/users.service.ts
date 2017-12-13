@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../store/models/users.model';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UsersService {
 
-  private usersURL = 'http://localhost:3000/users';
+  // private usersURL = 'http://localhost:3000/users';
+  readonly usersURL = 'http://localhost:3000/users';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,6 +30,19 @@ export class UsersService {
    */
   getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.usersURL);
+  }
+
+  /**
+   * Retorna el recurso usuario especificado por id desde el backend
+   *
+   * @param {number} id Id de usuario a buscar
+   * @returns {Observable<User>} Usuario encontrado
+   * @memberof UsersService
+   */
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(
+      this.usersURL,
+      { params: new HttpParams().set('id', `${id}`) });
   }
 
   /**
